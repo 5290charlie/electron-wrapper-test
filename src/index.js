@@ -54,7 +54,7 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on('saveText', (event, txtVal) => {
-  console.log('saveText:', event);
+  // console.log('saveText:', event);
 
   const filePath = path.join(app.getPath('home'), '/.testing-electron');
 
@@ -71,27 +71,27 @@ ipcMain.on('saveText', (event, txtVal) => {
 
 autoUpdater.on('checking-for-update', (info) => {
   // console.log('checking-for-update');
-  sendUpdateMessage("checking for updates ...");
+  console.log("checking for updates ...");
 })
 
 /*New Update Available*/
 autoUpdater.on("update-available", (info) => {
-  sendUpdateMessage(`Update available. Current version ${app.getVersion()}`);
+  console.log(`Update available. Current version ${app.getVersion()}`);
   let pth = autoUpdater.downloadUpdate();
-  sendUpdateMessage(pth);
+  console.log(pth);
 });
 
 autoUpdater.on("update-not-available", (info) => {
-  sendUpdateMessage(`No update available. Current version ${app.getVersion()}`);
+  console.log(`No update available. Current version ${app.getVersion()}`);
 });
 
 /*Download Completion Message*/
 autoUpdater.on("update-downloaded", (info) => {
-  sendUpdateMessage(`Update downloaded. Current version ${app.getVersion()}`);
+  console.log(`Update downloaded. Current version ${app.getVersion()}`);
 });
 
 autoUpdater.on("error", (info) => {
-  sendUpdateMessage(info);
+  console.log(JSON.stringify(info, null, 2));
 });
 
 
