@@ -13,8 +13,8 @@ let mainWindow;
 /**
  * Auto update options...
  */
-// autoUpdater.autoDownload = false;
-// autoUpdater.autoInstallOnAppQuit = true;
+autoUpdater.autoDownload = false;
+autoUpdater.autoInstallOnAppQuit = true;
 
 const createWindow = () => {
   // Create the browser window.
@@ -77,8 +77,9 @@ autoUpdater.on('checking-for-update', (info) => {
 /*New Update Available*/
 autoUpdater.on("update-available", (info) => {
   console.log(`Update available. Current version ${app.getVersion()}`);
-  let pth = autoUpdater.downloadUpdate();
-  console.log(pth);
+  autoUpdater.downloadUpdate().then((lst) => {
+    console.log('update downloaded', lst);
+  });
 });
 
 autoUpdater.on("update-not-available", (info) => {
