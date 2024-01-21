@@ -13,6 +13,7 @@ let mainWindow;
 /**
  * Auto update options...
  */
+// NOTE: Breaks if true with download called on event (below)
 autoUpdater.autoDownload = false;
 autoUpdater.autoInstallOnAppQuit = true;
 
@@ -32,7 +33,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 const sendUpdateMessage = (msg = 'default msg') => {
