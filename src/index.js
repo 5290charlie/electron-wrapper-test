@@ -70,7 +70,7 @@ ipcMain.on('saveText', (event, txtVal) => {
 });
 
 autoUpdater.on('checking-for-update', (info) => {
-  console.log('checking-for-update', info);
+  // console.log('checking-for-update');
   sendUpdateMessage("checking for updates ...");
 })
 
